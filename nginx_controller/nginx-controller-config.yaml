@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-configuration
+  namespace: ingress-nginx
+  labels:
+    app: ingress-nginx
+data:
+  # NOTE(ageapps): proxy-protocol doesn´t seem to be supported in GKE
+  # use-proxy-protocol: "true"
+  proxy-send-timeout: "3600"
+  proxy-read-timeout: "3600"
+  enable-sticky-sessions: "true"
+  enable-vts-status: "true"
+  affinity: "cookie"
+  session-cookie-name: "route"
+  session-cookie-hash: "sha1"
