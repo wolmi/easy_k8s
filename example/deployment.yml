@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: echo-service
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: echo-service
+        tier: backend
+    spec:
+      containers:
+        - name: "echo-node"
+          image: "kennship/http-echo"
+          imagePullPolicy: Always
+          env:
+          # For consupmption by rabbitmq-env.conf
+          - name: PORT
+            value: 8080
+          ports:
+            - containerPort: 8080
