@@ -17,6 +17,6 @@ spec:
           env:
           # For consupmption by rabbitmq-env.conf
           - name: PORT
-            value: 8080
+            value: "8080"
           ports:
             - containerPort: 8080
